@@ -2,7 +2,7 @@
 import pyrebase
 import streamlit as st
 from datetime import datetime
-import json
+import numpy as np
 
 #Configuration key
 firebaseConfig = {
@@ -26,9 +26,7 @@ storage = firebase.storage()
 
 st.sidebar.markdown("<h1 style='text-align: center;'>Mood Application</h1>", unsafe_allow_html=True)
 
-
 #Authentication
-
 choice = st.sidebar.selectbox('Login/Sign up', ['Login','Sign up'])
 
 email = st.sidebar.text_input('Please enter your email address')
@@ -46,7 +44,7 @@ if choice == 'Sign up':
       user =  auth.sign_in_with_email_and_password(email,password)
       db.child(user['localId']).child("Handle").set(handle)
       db.child(user['localId']).child("Id").set(user['localId'])
-      db.child(user['localId']).child("Email").set(email)  # Store email
+      #db.child(user['localId']).child("Email").set(email)  # Store email
       #Welcome
       st.title('Hello' +" "+ handle)
       st.info('Use login to check back again')
@@ -69,19 +67,76 @@ if choice == 'Login':
             #email = st.text_input("Email")
             location = st.text_input("Location")
             notes = st.text_input("Notes")
+
+            st.subheader('Choose your mood')
+
+            # Custom CSS for button styling
+            st.markdown("""
+            <style>
+            .mood-button {
+                display: inline-block;
+                margin: 4px;
+                padding: 10px 5px;
+                font-size: 12px;
+                text-align: center;
+                vertical-align: middle;
+                cursor: pointer;
+                background-color: #f0f0f0;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                width: 100px;
+                height: 40px;
+                line-height: 20px;
+                text-align: center;
+            }
+            .mood-button:hover {
+                background-color: #e0e0e0;
+            }
+            </style>
+            """, unsafe_allow_html=True)
+
+
+            mood_grid = [
+                ["Enraged", "Panicked", "Stressed", "Jittery", "Shocked", "Surprised", "Upbeat", "Festive", "Exhilarated", "Ecstatic"],
+                ["Livid", "Furious", "Frustrated", "Tense", "Stunned", "Hyper", "Cheerful", "Motivated", "Inspired", "Elated"],
+                ["Fuming", "Frightened", "Angry", "Nervous", "Restless", "Energized", "Lively", "Enthusiastic", "Optimistic", "Excited"],
+                ["Anxious", "Apprehensive", "Worried", "Irritated", "Annoyed", "Pleased", "Happy", "Focused", "Proud", "Thrilled"],
+                ["Repulsed", "Troubled", "Concerned", "Uneasy", "Peeved", "Pleasant", "Joyful", "Hopeful", "Playful", "Blissful"],
+                ["Disgusted", "Glum", "Disappointed", "Down", "Apathetic", "At ease", "Easygoing", "Content", "Loving", "Fulfilled"],
+                ["Pessimistic", "Morose", "Discouraged", "Sad", "Bored", "Calm", "Secure", "Satisfied", "Grateful", "Touched"],
+                ["Alienated", "Miserable", "Lonely", "Disheartened", "Tired", "Relaxed", "Chill", "Restful", "Blessed", "Balanced"],
+                ["Despondent", "Depressed", "Sullen", "Exhausted", "Fatigued", "Mellow", "Thoughtful", "Peaceful", "Comfy", "Carefree"],
+                ["Despair", "Hopeless", "Desolate", "Spent", "Drained", "Sleepy", "Complacent", "Tranquil", "Cozy", "Serene"]
+            ]
+
+            mood_choice = None
+
+            for row in mood_grid:
+                cols = st.columns(10)
+                for idx, col in enumerate(cols):
+                    mood = row[idx]
+                    if col.button(mood, key=mood, use_container_width=True, help=mood):
+                        mood_choice = mood
+
+            if mood_choice:
+                st.write(f'You selected mood: {mood_choice}')
+
             submit_details = st.button('Submit')
 
-            if submit_details:
-              user_id = user['localId']
-             # Store each detail as a separate child node under the "History" node
-              db.child(user_id).child("History").child("Full Name").set(full_name)
-              db.child(user_id).child("History").child("Date of Entry").set(str(date_of_entry))
-              db.child(user_id).child("History").child("Username").set(username)
-              db.child(user_id).child("History").child("Email").set(email)
-              db.child(user_id).child("History").child("Location").set(location)
-              db.child(user_id).child("History").child("Notes").set(notes)
-              st.success("Details submitted successfully!")
 
+            if submit_details:
+                user_id = user['localId']
+             # Store each detail as a separate child node under the "History" node
+                db.child(user_id).child("Full Name").set(full_name)
+                db.child(user_id).child("Date of Entry").set(str(date_of_entry))
+                db.child(user_id).child("Username").set(username)
+                db.child(user_id).child("Email").set(email)
+                db.child(user_id).child("Location").set(location)
+                db.child(user_id).child("Notes").set(notes)
+                db.child(user_id).child("Mood").set(mood_choice)
+                st.success("Details submitted successfully!")
+            elif submit_details and not mood_choice:
+                st.warning("Please select a mood before submitting.")
 
 # History
       if bio == 'History':
