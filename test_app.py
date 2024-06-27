@@ -4,6 +4,10 @@ import streamlit as st
 from datetime import datetime
 import numpy as np
 
+# Load CSS
+with open("C:/Users/rusha/Downloads/Streamlit/style.css") as f:
+    st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+
 #Configuration key
 firebaseConfig = {
   'apiKey': "AIzaSyCjJljLRGbo71Q242xVKZcwnTpMbqMp8yU",
@@ -69,33 +73,6 @@ if choice == 'Login':
             notes = st.text_input("Notes")
 
             st.subheader('Choose your mood')
-
-            # Custom CSS for button styling
-            st.markdown("""
-            <style>
-            .mood-button {
-                display: inline-block;
-                margin: 4px;
-                padding: 10px 5px;
-                font-size: 12px;
-                text-align: center;
-                vertical-align: middle;
-                cursor: pointer;
-                background-color: #f0f0f0;
-                border: 1px solid #ddd;
-                border-radius: 4px;
-                width: 100px;
-                height: 40px;
-                line-height: 20px;
-                text-align: center;
-            }
-            .mood-button:hover {
-                background-color: #e0e0e0;
-            }
-            </style>
-            """, unsafe_allow_html=True)
-
-
             mood_grid = [
                 ["Enraged", "Panicked", "Stressed", "Jittery", "Shocked", "Surprised", "Upbeat", "Festive", "Exhilarated", "Ecstatic"],
                 ["Livid", "Furious", "Frustrated", "Tense", "Stunned", "Hyper", "Cheerful", "Motivated", "Inspired", "Elated"],
@@ -109,14 +86,31 @@ if choice == 'Login':
                 ["Despair", "Hopeless", "Desolate", "Spent", "Drained", "Sleepy", "Complacent", "Tranquil", "Cozy", "Serene"]
             ]
 
+            css_classes = [
+                ["enraged", "panicked", "stressed", "jittery", "shocked", "surprised", "upbeat", "festive", "exhilarated", "ecstatic"],
+                ["livid", "furious", "frustrated", "tense", "stunned", "hyper", "cheerful", "motivated", "inspired", "elated"],
+                ["fuming", "frightened", "angry", "nervous", "restless", "energized", "lively", "enthusiastic", "optimistic", "excited"],
+                ["anxious", "apprehensive", "worried", "irritated", "annoyed", "pleased", "happy", "focused", "proud", "thrilled"],
+                ["repulsed", "troubled", "concerned", "uneasy", "peeved", "pleasant", "joyful", "hopeful", "playful", "blissful"],
+                ["disgusted", "glum", "disappointed", "down", "apathetic", "at-ease", "easygoing", "content", "loving", "fulfilled"],
+                ["pessimistic", "morose", "discouraged", "sad", "bored", "calm", "secure", "satisfied", "grateful", "touched"],
+                ["alienated", "miserable", "lonely", "disheartened", "tired", "relaxed", "chill", "restful", "blessed", "balanced"],
+                ["despondent", "depressed", "sullen", "exhausted", "fatigued", "mellow", "thoughtful", "peaceful", "comfy", "carefree"],
+                ["despair", "hopeless", "desolate", "spent", "drained", "sleepy", "complacent", "tranquil", "cozy", "serene"]
+            ]
+
             mood_choice = None
 
-            for row in mood_grid:
+            for i, row in enumerate(mood_grid):
                 cols = st.columns(10)
-                for idx, col in enumerate(cols):
-                    mood = row[idx]
-                    if col.button(mood, key=mood, use_container_width=True, help=mood):
+                for j, col in enumerate(cols):
+                    mood = row[j]
+                    css_class = css_classes[i][j]
+                    button_html = f'<button class="mood-button {css_class}" onclick="window.location.href=\'#{mood}\'">{mood}</button>'
+                    col.markdown(button_html, unsafe_allow_html=True)
+                    if st.session_state.get(mood):
                         mood_choice = mood
+                        st.session_state[mood] = False
 
             if mood_choice:
                 st.write(f'You selected mood: {mood_choice}')
