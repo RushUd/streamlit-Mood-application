@@ -34,19 +34,19 @@
   background-color: #ffcccc;
 }
 .surprised {
-  background-color: #ffeb3b;
+  background-color: #fff176;
 }
 .upbeat {
-  background-color: #ffc107;
+  background-color: #ffeb3b;
 }
 .festive {
-  background-color: #ff9800;
+  background-color: #f4d03f;
 }
 .exhilarated {
-  background-color: #ff5722;
+  background-color: #ffc107;
 }
 .ecstatic {
-  background-color: #e91e63;
+  background-color: #ff9800;
 }
 .livid {
   background-color: #ff0000;
@@ -64,19 +64,19 @@
   background-color: #ffcccc;
 }
 .hyper {
-  background-color: #ffeb3b;
+  background-color: #fff176;
 }
 .cheerful {
-  background-color: #ffc107;
+  background-color: #ffeb3b;
 }
 .motivated {
-  background-color: #ff9800;
+  background-color: #f4d03f;
 }
 .inspired {
-  background-color: #ff5722;
+  background-color: #ffc107;
 }
 .elated {
-  background-color: #e91e63;
+  background-color: #ff9800;
 }
 .fuming {
   background-color: #ff0000;
@@ -94,19 +94,19 @@
   background-color: #ffcccc;
 }
 .energized {
-  background-color: #ffeb3b;
+  background-color: #fff176;
 }
 .lively {
-  background-color: #ffc107;
+  background-color: #ffeb3b;
 }
 .enthusiastic {
-  background-color: #ff9800;
+  background-color: #f4d03f;
 }
 .optimistic {
-  background-color: #ff5722;
+  background-color: #ffc107;
 }
 .excited {
-  background-color: #e91e63;
+  background-color: #ff9800;
 }
 .anxious {
   background-color: #ff0000;
@@ -124,19 +124,19 @@
   background-color: #ffcccc;
 }
 .pleased {
-  background-color: #ffeb3b;
+  background-color: #fff176;
 }
 .happy {
-  background-color: #ffc107;
+  background-color: #ffeb3b;
 }
 .focused {
-  background-color: #ff9800;
+  background-color: #f4d03f;
 }
 .proud {
-  background-color: #ff5722;
+  background-color: #ffc107;
 }
 .thrilled {
-  background-color: #e91e63;
+  background-color: #ff9800;
 }
 .repulsed {
   background-color: #ff0000;
@@ -154,19 +154,19 @@
   background-color: #ffcccc;
 }
 .pleasant {
-  background-color: #ffeb3b;
+  background-color: #fff176;
 }
 .joyful {
-  background-color: #ffc107;
+  background-color: #ffeb3b;
 }
 .hopeful {
-  background-color: #ff9800;
+  background-color: #f4d03f;
 }
 .playful {
-  background-color: #ff5722;
+  background-color: #ffc107;
 }
 .blissful {
-  background-color: #e91e63;
+  background-color: #ff9800;
 }
 .disgusted {
   background-color: #0000ff;
@@ -184,19 +184,19 @@
   background-color: #ccccff;
 }
 .at-ease {
-  background-color: #00ff00;
+  background-color: #ccffcc;
 }
 .easygoing {
-  background-color: #33ff33;
+  background-color: #99ff99;
 }
 .content {
   background-color: #66ff66;
 }
 .loving {
-  background-color: #99ff99;
+  background-color: #33ff33;
 }
 .fulfilled {
-  background-color: #ccffcc;
+  background-color: #00ff00;
 }
 .pessimistic {
   background-color: #0000ff;
@@ -214,19 +214,19 @@
   background-color: #ccccff;
 }
 .calm {
-  background-color: #00ff00;
+  background-color: #ccffcc;
 }
 .secure {
-  background-color: #33ff33;
+  background-color: #99ff99;
 }
 .satisfied {
   background-color: #66ff66;
 }
 .grateful {
-  background-color: #99ff99;
+  background-color: #33ff33;
 }
 .touched {
-  background-color: #ccffcc;
+  background-color: #00ff00;
 }
 .alienated {
   background-color: #0000ff;
@@ -244,19 +244,19 @@
   background-color: #ccccff;
 }
 .relaxed {
-  background-color: #00ff00;
+  background-color: #ccffcc;
 }
 .chill {
-  background-color: #33ff33;
+  background-color: #99ff99;
 }
 .restful {
   background-color: #66ff66;
 }
 .blessed {
-  background-color: #99ff99;
+  background-color: #33ff33;
 }
 .balanced {
-  background-color: #ccffcc;
+  background-color: #00ff00;
 }
 .despondent {
   background-color: #0000ff;
@@ -274,19 +274,19 @@
   background-color: #ccccff;
 }
 .mellow {
-  background-color: #00ff00;
+  background-color: #ccffcc;
 }
 .thoughtful {
-  background-color: #33ff33;
+  background-color: #99ff99;
 }
 .peaceful {
   background-color: #66ff66;
 }
 .comfy {
-  background-color: #99ff99;
+  background-color: #33ff33;
 }
 .carefree {
-  background-color: #ccffcc;
+  background-color: #00ff00;
 }
 .despair {
   background-color: #0000ff;
@@ -304,17 +304,35 @@
   background-color: #ccccff;
 }
 .sleepy {
-  background-color: #00ff00;
+  background-color: #ccffcc;
 }
 .complacent {
-  background-color: #33ff33;
+  background-color: #99ff99;
 }
 .tranquil {
   background-color: #66ff66;
 }
 .cozy {
-  background-color: #99ff99;
+  background-color: #33ff33;
 }
 .serene {
-  background-color: #ccffcc;
+  background-color: #00ff00;
+}
+
+.history-entry {
+  border: 1px solid #e0e0e0;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.history-entry h3 {
+  font-size: 16px; /* Set the font size to be consistent with other text */
+  margin: 0 0 5px 0;
+}
+
+.history-entry p {
+  font-size: 16px; /* Set the font size to be consistent with other text */
+  margin: 2px 0;
 }
