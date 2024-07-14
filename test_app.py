@@ -59,7 +59,7 @@ if choice == 'Login':
         user = auth.sign_in_with_email_and_password(email, password)
         st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
 
-        bio = st.radio('Jump to', ['New Entry', 'History', 'XYZ'])
+        bio = st.radio('Jump to', ['New Entry', 'History'])
 
         # New Entry
         if bio == 'New Entry':
@@ -170,10 +170,11 @@ if choice == 'Login':
 
                 if history:
                     for entry_id, entry_data in history.items():
-                        st.write(f"**Date:** {entry_data.get('Date of Entry', 'N/A')}  \n"
-                                 f"**Location:** {entry_data.get('Location', 'N/A')}  \n"
-                                 f"**Notes:** {entry_data.get('Notes', 'N/A')}  \n"
-                                 "---")
+                        st.markdown(f'<div class="history-entry"><h3>Date: {entry_data.get("Date of Entry", "N/A")}</h3>'
+                                    f'<p><strong>Location:</strong> {entry_data.get("Location", "N/A")}</p>'
+                                    f'<p><strong>Notes:</strong> {entry_data.get("Notes", "N/A")}</p>'
+                                    f'<p><strong>Mood:</strong> {entry_data.get("Mood", "N/A")}</p></div>',
+                                    unsafe_allow_html=True)
                 else:
                     st.info("No history found")
             else:
